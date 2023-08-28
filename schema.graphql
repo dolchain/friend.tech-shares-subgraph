@@ -1,3 +1,10 @@
+type Share @entity {
+  id: Bytes! @id @unique
+  trader: Bytes! # address
+  subject: Bytes! # address
+  supply: Int! # uint256
+}
+
 type OwnershipTransferred @entity(immutable: true) {
   id: Bytes!
   previousOwner: Bytes! # address
@@ -10,10 +17,10 @@ type OwnershipTransferred @entity(immutable: true) {
 type Trade @entity(immutable: true) {
   id: Bytes!
   trader: Bytes! # address
-  subject: Bytes! # address
   isBuy: Boolean! # bool
   shareAmount: BigInt! # uint256
   ethAmount: BigInt! # uint256
+  subject: Bytes! # address
   protocolEthAmount: BigInt! # uint256
   subjectEthAmount: BigInt! # uint256
   supply: BigInt! # uint256
